@@ -7,6 +7,10 @@ const {sendWelcomeMail , sendCancellationMail} = require('../email/account')
 
 const router = express.Router()
 
+router.get('https://recrutio.herokuapp.com/api/conversation/60aa314118f4ef0015bb74da', (req,res)=> {
+    console.log(res)
+} )
+
 router.post('/users', async (req,res) => {
     const user = new User(req.body)
     try {
