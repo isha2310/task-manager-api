@@ -4,11 +4,20 @@ const multer = require('multer')
 const User = require('../models/user')
 const auth = require('../middleware/authentication')
 const {sendWelcomeMail , sendCancellationMail} = require('../email/account')
+const https = require('https')
 
 const router = express.Router()
 
-router.get('https://recrutio.herokuapp.com/api/conversation/60aa314118f4ef0015bb74da', (req,res)=> {
-    console.log(res)
+router.get('/test', (req,res)=> {
+    var options={
+        host:"recrutio.herokuapp.com",
+        port:80,
+        path:"/api/conversation/60aa314118f4ef0015bb74da",
+        method:"GET"
+    }
+    https.request(options,function(res, err) {
+        console.log(res, '........', err)
+    })
 } )
 
 router.post('/users', async (req,res) => {
